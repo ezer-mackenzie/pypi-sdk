@@ -1,0 +1,38 @@
+site_name: PyPI SDK
+site_description: Typed Python client for PyPI's documented public APIs
+docs_dir: docs
+strict: true
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths:
+            - src
+          options:
+            members_order: source
+            show_source: false
+            show_root_heading: true
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - tables
+
+nav:
+  - Home: index.md
+  - Getting started: quickstart.md
+  - API reference: api.md
+  - Configuration: configuration.md
+  - Publishing: publishing.md
+  - Errors: errors.md
+  - Architecture: architecture.md
+  - Compatibility: compatibility.md
+  - Development: development.md
+  - Roadmap: roadmap.md
+  - Release process: releasing.md
+  - Changelog: changelog.md
