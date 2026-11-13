@@ -109,10 +109,13 @@ existing build backend first.
 
 For CI, prefer PyPI Trusted Publishing over long-lived API tokens. Configure
 the GitHub repository and workflow as a trusted publisher in the PyPI project
-settings, then copy
+settings using the GitHub repository owner, repository name, `publish.yml`, and
+the `pypi` environment. Configure the matching GitHub Environment (add
+protection rules if desired), then copy
 [`examples/publish.yml`](examples/publish.yml) to
 `.github/workflows/publish.yml` in the package being released. The workflow
-builds the package and uses PyPI's official GitHub Action to publish via OIDC.
+builds and validates distributions, then publishes them through PyPI's official
+GitHub Action using OIDC.
 See the [Trusted Publishing guide](https://docs.pypi.org/trusted-publishers/).
 
 ## API policies and boundaries

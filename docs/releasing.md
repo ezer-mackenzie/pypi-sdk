@@ -18,7 +18,8 @@
 
 7. Publish only after a repository remote and PyPI Trusted Publisher are
    configured. The release workflow uses the GitHub OIDC identity; it does not
-   require a long-lived PyPI token.
+   require a long-lived PyPI token. The configured publisher must match the
+   repository owner, repository name, `publish.yml`, and the `pypi` environment.
 
 Tags created in a local repository are local release markers until pushed to a
 configured remote. Do not create placeholder tags or claim that a local tag has

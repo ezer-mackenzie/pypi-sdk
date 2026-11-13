@@ -50,10 +50,18 @@ commit the token.
 ## Trusted Publishing for CI
 
 Configure the repository and workflow identity as a Trusted Publisher on the
-PyPI project. The example workflow in `examples/publish.yml` builds the package
-and uses PyPI's official GitHub Action with short-lived OIDC authentication.
-For this SDK's own release, `.github/workflows/publish.yml` uses the same
-approach once the repository remote and PyPI publisher are configured.
+PyPI project: repository owner, repository name, workflow filename
+`publish.yml`, and environment `pypi`. The example workflow in
+`examples/publish.yml` builds and checks the distributions, transfers them
+between jobs, and uses PyPI's official GitHub Action with short-lived OIDC
+authentication. Create a GitHub Environment named `pypi` and add deployment
+protection rules if desired.
+
+For this SDK's own release, `.github/workflows/publish.yml` follows the same
+build, wheel-validation, artifact-transfer, and environment-protected publish
+pattern. It verifies that the installed wheel version matches the `v`-prefixed
+tag before publishing. It publishes only from version tags beginning with `v`.
+A manual workflow dispatch from a branch will not publish.
 
 Trusted Publishing setup is performed in the PyPI web interface; it is not an
 account-management operation offered by this SDK.
